@@ -21,8 +21,9 @@ const config = {
       
       fontFamily: {
         "Alegreya": ["Alegreya", "serif"],
-        "Caveat": ["Caveat", "cursive"],
+        "PREVCaveat": ["Caveat", "cursive"],
         "Russo-one": ["Russo One", "sans-serif"],
+        "Caveat": ["Shantell Sans", "cursive"],
       },
       colors: {
         "main-bg-color": "#030202",
