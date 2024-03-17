@@ -29,7 +29,7 @@ export default function HorizontalScroll({children, ID, heading, className}: Scr
 
 
   return (
-    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2 }} viewport={{ once: true }} className={`w-full px-2 py-5 flex flex-col items-start relative ${className}`}>
+    <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 2 }} viewport={{ once: true }} className={`w-full min-h-40 px-2 py-5 flex flex-col items-start relative ${className}`}>
             <Button variant={"link"} className='z-50'>{heading} {">"}</Button>
             <div id={ID} className="z-50 w-full relative flex flex-row gap-4 py-2 overflow-x-auto scroll-smooth scroll-m-20 scrollarea">
                 {children}
