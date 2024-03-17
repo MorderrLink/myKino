@@ -75,7 +75,7 @@ export default function AccountModification(user: any) {
                       </SelectTrigger>
                       <SelectContent className="bg-second-bg-color text-text-main border-none shadow-lg">
                       { GENRES.map(genre => {
-                        return <SelectItem value={genre}>{genre}</SelectItem>
+                        return <SelectItem key={genre} value={genre}>{genre}</SelectItem>
                       }) }
                       </SelectContent>
                     </Select>

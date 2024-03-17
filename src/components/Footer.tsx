@@ -35,7 +35,7 @@ export default function Footer() {
                   </ul>
               </div>
               <div>
-                  <h2 className="mb-6 text-sm font-semibold text-text-second">API's</h2>
+                  <h2 className="mb-6 text-sm font-semibold text-text-second">API&apos;s</h2>
                   <ul className="text-gray-500 dark:text-gray-400 font-medium">
                       <li className="mb-4">
                           <a href="https://clerk.com/" className="hover:underline">Clerk</a>
