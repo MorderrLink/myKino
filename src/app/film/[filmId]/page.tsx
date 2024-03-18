@@ -52,6 +52,11 @@ export default function filmPage() {
       };
    }, []);
 
+   const formatter = new Intl.ListFormat("ru", {
+    localeMatcher: 'best fit',
+    style: 'narrow',
+    type: 'conjunction'
+   })
 
     const filmData = useQuery(api.films.getFilmById, { filmId: filmId })
     const film = filmData?.[0]
@@ -80,7 +85,7 @@ export default function filmPage() {
 
             <h1 className='lg:mr-8 text-xl'>{film?.name}</h1>
       </div>
-
+      
       {/* UNAUTHED or HAS NO SUB */}
       { (!userData ?? !userData?.endsOn ?? userData.endsOn < Date.now()) &&
       <div className='font-Caveat text-xl flex justify-center py-3'>
@@ -96,7 +101,7 @@ export default function filmPage() {
         <div className='flex flex-col lg:flex-row gap-5 py-3 px-2'>
             <div className='lg:w-1/2 border-[1px] border-none text-2xl'>
                 <h1 className='font-mono'>Название: <span className='font-Russo-one'>{film?.name}</span> </h1>
-                <h1 className='font-mono'>Жанр: <span className='font-Russo-one'>{film?.janres}</span> </h1>
+                <h1 className='font-mono'>Жанр: <span className='font-Russo-one'>{formatter.format(film?.janres ?? [])}</span> </h1>
                 <h1 className='font-mono'>Год: <span className='font-Russo-one'>{film?.year}</span> </h1>
                 <h1 className='font-mono'>Страна: <span className='font-Russo-one'>{film?.country}</span> </h1>
                 <h1 className='font-mono'>В ролях: <span className='font-Russo-one'>{film?.characters}</span></h1>
