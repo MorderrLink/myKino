@@ -1,24 +1,35 @@
 "use client"
 import Header from "@/components/Header"
 import { Button } from "@/components/ui/button"
-import { useSession } from "@clerk/nextjs";
+import {  SignInButton, useSession } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
 import { useAction } from "convex/react";
 import { api } from "../../../convex/_generated/api";
+import { toast } from "sonner";
 
 
 export default function subscription() {
 
-    const { isSignedIn } = useSession()
+    const { isSignedIn, session } = useSession()
     const router = useRouter()
     const pay = useAction(api.stripe.pay)
     async function handleSubscription(period:string) {
         if(!isSignedIn) {
-          router.push('/sign-in')
+            toast.warning("Вы не вошли в аккаунт!", {
+                action: {
+                    label: <SignInButton   children={<h1 className="font-Caveat">Войти</h1>}/>,
+                    onClick: () => {},
+
+                }
+            })
+               
+            return
         }
         const url = await pay({payId: period})
         void router.push(url)
     }
+
+
 
   return (
     <div className="w-full h-full min-h-screen px-10 py-5 bg-main-bg-color text-text-main font-Russo-one">

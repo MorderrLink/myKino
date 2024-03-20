@@ -87,7 +87,7 @@ export default function filmPage() {
       </div>
       
       {/* UNAUTHED or HAS NO SUB */}
-      { (!userData ?? !userData?.endsOn ?? userData.endsOn < Date.now()) &&
+      { (!userData ?? !userData?.endsOn ?? (userData && userData.endsOn < Date.now())) &&
       <div className='font-Caveat text-xl flex justify-center py-3'>
         <h1>У вас нет <span className='font-mono text-lg text-text-second px-2'>активной подписки</span> или вы <span className='font-mono text-lg text-text-second px-2'>не авторизованы</span></h1>
       </div> 
